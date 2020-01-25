@@ -1,8 +1,11 @@
-.homePage {
-    /* text-align: center; */
-    color: chartreuse;
-    /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-stretch: expanded; */
+.style1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-stretch: ultra-expanded;
+    font-style: italic; 
+    font-size: xx-large;
+    color: blue;
+    text-shadow: grey;
+    text-align: center;
   }
   
 
