@@ -51,9 +51,7 @@ App.get("/name/:name", (req, res) => {
     }); // ...This error object will be overwritten by any other results that are generated below
 
 
-// Color-code all routes messages:
-
-    // A) Any invalid routes should print to the console in red
+// // A) Any invalid routes should print to the console in red
     if(result.error) {
         console.log(chalk.red(req.path));
       }
