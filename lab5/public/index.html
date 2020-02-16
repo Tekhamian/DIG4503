@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LAB 5</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!-- Lab5: Part 2 - Create a script element with 2 functions (fetch id & fetch name ) -->
+        <script>
+
+            //ID Section
+             function readId(event) {
+
+                // (prevent) Stop the 'default' form action
+                event.preventDefault();
+
+                // Find the element with 'id="id"'
+                let element = document.querySelector("#id");
+
+                fetch("/id/" + element.value).then((res) => {
+                    // Parse the string into a JavaScript object and return it
+                    return res.json();
+                    }) .then((processed) => {
+                    
+                    // Find the element with 'id="reportingArea"'
+                    let reporting = document.querySelector("#reportingArea");
+
+                    // Does the 'processed' object have a property called 'error'?
+                    if(processed.error) {
+                        reporting.innerHTML = processed.error;
+                    } else {
+                        reporting.innerHTML = processed.name;
+                        }
+
+                    });
+
+                // Name Section
+                } function readName(event) {
+
+                // Stop (prevent) the 'default' form action
+                event.preventDefault();
+
+                // Find the element with 'id="name"'
+                let element = document.querySelector("#name");
+
+                fetch("/name/" + element.value).then((res) => {
+                    // Parse the string into a JavaScript object and return it
+                    return res.json();
+                    }) .then((processed) => {
+                    
+                    // Find the element with 'id="reportingArea"'
+                    let reporting = document.querySelector("#reportingArea");
+
+                    // Does the 'processed' object have a property called 'error'?
+                    if(processed.error) {
+                        reporting.innerHTML = processed.error;
+                    } else {
+                        reporting.innerHTML = processed.name;
+                        }
+
+                    });
+                }
+        </script>
+        <!-- Lab5: Part 2 - Create a form element for an ID & include... -->
+        <section>
+            <div class="l1">
+                <label>LAB 5</label>
+            </div>
+            
+            <label for="id"><h2>ID</h2></label>
+            <form onsubmit="readId(event)">
+                <!-- ... input element w/ text input &... -->
+                <input type="text" id="id" name="id" placeholder="Enter ID..">
+                <!-- ...button element for submition -->
+                <button class="b1">SUBMIT</button>
+            </form>
+            <!-- Lab5: Part 2 - Create a form element for a NAME & include... -->
+            <label for="id"><h2>NAME</h2></label>
+            <form onsubmit="readName(event)">
+                <!-- ... input element w/ text input &... -->
+                <input type="text" id="name" name="name" placeholder="Enter Name..">
+                <!-- ...button element for submition -->
+                <button>SUBMIT</button>
+            </form>
+            <!-- Create a reporting area div that updates with the reponse of the server -->
+            <hr>
+            <h2>REPORTING</h2>
+            <div id="reportingArea"></div>
+        </section>
+    </body>
+</html>

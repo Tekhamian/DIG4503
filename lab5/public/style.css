@@ -1,0 +1,63 @@
+.l1 {
+  text-align: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: xx-large;
+  color: #e6260d;
+  padding: 20px;
+}
+ 
+ section {
+  border-radius: 5px;
+  background-color: #e0d75bc7;
+  padding-left: 20px; 
+  padding-right: 20px; 
+  padding-bottom: 20px;
+  border: 3px solid rgb(33, 70, 173);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+  
+h2 {
+    color: rgb(33, 70, 173);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+input {
+  width: 50%;
+  padding: 12px 12px;
+  border: 3px solid rgb(33, 70, 173);
+  border-radius: 4px;
+}
+
+button{
+  width: 40%;
+  padding: 14px 25px;
+  background-color:rgb(33, 70, 173);
+  color: #fff;
+  border: #e6260d;
+  border-radius: 4px;
+  cursor: pointer;
+  text-emphasis: bold;
+ }
+
+ button:hover {
+    background-color:rgb(236, 76, 13);
+    color:#fff;
+  }
+
+  #reportingArea{
+    width: 70%;
+
+    padding: 20px 55px;
+    margin: 8px 0;
+    display: inline-block;
+    background-color:#fff;
+    color:rgb(33, 70, 173);
+    /* font-style: italic; */
+    font-family: 'Arial Narrow Bold', sans-serif;
+    font-size: xx-large;
+    border: 3px solid rgb(236, 76, 13);
+    border-radius: 4px;
+  }

@@ -1,0 +1,30 @@
+<html>
+<body>
+    <script>
+        function clicker(event) {
+            event.preventDefault();
+            let element = document.getElementByID("pokemon");
+            //  can also be written - let element = document.getElementByID("pokemon");
+
+            fetch("/api/" +element.value).then((res)=> {
+                return res.json();
+            }).then((processed) =>{
+                let reporting = document.getElementById("reportingArea");
+                // can also be written - let reporting = document.querySelector("#reportingArea");
+                if (processed.error) { 
+                    reporting.innerHTML = processed.error;
+                 } else {
+                    reporting.innerHTML= "Secret!"
+                }
+            });
+        }
+                
+    </script>
+<form onsubmit="clicker(event)" action="">
+   <input type="text" id="pokemon"> 
+   <button> Submit</button>
+</form>
+    <div id="reportingArea"> </div>
+</body>
+
+</html>

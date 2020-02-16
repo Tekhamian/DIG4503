@@ -1,5 +1,5 @@
 {
-  "name": "lab4",
+  "name": "lab5",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "chalk": "^3.0.0",
+    "express": "^4.17.1",
     "json-pokemon": "^1.0.0"
   }
 }
