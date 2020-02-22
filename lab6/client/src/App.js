@@ -11,6 +11,7 @@ function App() {
       <IdSearch />
       <NameSearch />
       <hr/>
+      {/* ReportingArea component that provides the output */}
       <ReportingArea />
     </section>
   );

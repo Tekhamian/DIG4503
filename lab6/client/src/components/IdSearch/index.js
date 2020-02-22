@@ -37,7 +37,7 @@ class IdSearch extends React.Component {
                         <label>LAB 6</label>
                         <hr/>
                     </div>                    
-                    <div></div><h2>ID</h2>
+                    <label><h2>ID</h2></label>
                     {/* The previous onSubmit attribute should be set to the readId function using JSX */}
                     <form onSubmit={this.readId}>
                          {/* ... input element w/ text input &... */}
