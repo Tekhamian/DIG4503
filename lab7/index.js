@@ -53,7 +53,7 @@ App.get("/movies/year/:year", (req, res) => {
 
     // findyear() will return a Promise
     // Once it finishes, send the response
-    database.findyear(req.params.year).then((movie) => {
+    database.findYear(req.params.year).then((movie) => {
 
         // If a movie was not found, it will be null
         if(movie != null) {
