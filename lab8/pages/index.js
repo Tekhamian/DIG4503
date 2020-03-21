@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div>
       <Head>
-        <title>PokeMon DataBase!</title>
+        <title>PokeMon Character DataBase!</title>
       </Head>
       <div>
         <p>
