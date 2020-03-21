@@ -1,79 +1,29 @@
-import Head from 'next/head';
-import Link from 'next/link';
-
 // OPTION A
-const Home = () => {
-  return (
-    <div>
-      <Head>
-        <title>PokeMon Character DataBase!</title>
-      </Head>
-      <div>
-        <p>
-          Search for Character using Name!
-        </p>
-        <Link href="/NameSearch">
-          <a>Name Search</a>
-        </Link>
-      </div>
-      <div>
-        <p>
-          Search for Character using Id!
-        </p>
-        <Link href="/IdSearch">
-          <a>Id Search</a>
-        </Link>
-      </div>
-    </div>
-  );
-}
 
-export default Home;
+// import Head from 'next/head';
+// import Link from 'next/link';
 
+// Functional component "Home", using an arrow fuction
 
-
-
-
-// OPTION C
-// import Head from 'next/head'
-
-
-// class NameSearch extends React.Component {
-//   render(){
-//     return (<p>NameSearch</p>);
-//   }
-// }
-//  export default NameSearch;
-
-//  class IdSearch extends React.Component {
-//   render(){
-//     return (<p>IdSearch</p>);
-//   }
-// }
-//  export default IdSearch;
-
-
-// OPTION B
 // const Home = () => {
 //   return (
 //     <div>
 //       <Head>
-//         <title>This is the PokeMon DataBase!</title>
+//         <title>PokeMon Character DataBase!</title>
 //       </Head>
 //       <div>
-//         <p>
-//           Search for Character using Name!
-//         </p>
-//         <Link href="/name">
+//         <Link href="../components/NameSearch">
 //           <a>Name Search</a>
 //         </Link>
 //       </div>
 //       <div>
-//         <p>
-//           Search for Character using Id!
-//         </p>
-//         <Link href="/id">
+//         <Link href='../components/IdSearch'>
 //           <a>Id Search</a>
+//         </Link>
+//       </div>
+//       <div>
+//         <Link href='../components/ReportingArea'>
+//           <a>Reporting Area</a>
 //         </Link>
 //       </div>
 //     </div>
@@ -81,3 +31,28 @@ export default Home;
 // }
 
 // export default Home;
+
+
+
+
+// OPTION B (taken mostly from Lab6 in App.js folder)
+
+import IdSearch from '../components/IdSearch';
+import NameSearch from '../components/NameSearch';
+import ReportingArea from '../components/ReportingArea';
+
+class App extends React.Component {
+  render() {
+  return (
+    <section className="App">
+      <IdSearch />
+      <NameSearch />
+      <hr/>
+      {/* ReportingArea component that provides the output */}
+      <ReportingArea />
+    </section>
+  );
+}
+}
+
+export default App;

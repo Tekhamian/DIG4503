@@ -1,40 +1,53 @@
 class IdSearch extends React.Component {
+    
+    //ID Section
+    readId(event) {
 
-    idSearchFormSubmit = () => {
+        // (prevent) Stop the 'default' form action
+        event.preventDefault();
 
-        // Get the input's value
-        let id = document.querySelector('#idSearch').value;
+        // Find the element with 'id="id"'
+        let element = document.querySelector("#id");
 
-        // Test if id is an empty string
-        // If so, change it to a value
-        if(id.length === 0) {
-            id = "0";
+        fetch("/api/pokemon/id/" + element.value).then((res) => {
+            // Parse the string into a JavaScript object and return it
+            return res.json();
+            }) .then((processed) => {
+            
+            // Find the element with 'id="reportingArea"'
+            let reporting = document.querySelector("#reportingArea");
+
+            // Does the 'processed' object have a property called 'error'?
+            if(processed.error) {
+                reporting.innerHTML = processed.error;
+            } else {
+                reporting.innerHTML = processed.name;
+                }
+
+            });
+
+            element.value ="";
         }
 
-        // Look for characters based on their id
-        fetch("/api/pokemon/id/" + id)
-        .then((res) => { return res.json() })
-        .then((processed) => {
-            // Call the callback function given to the class component
-            this.props.callback(processed);
-        });
+        render() {
+            return(
+                <div>
+                    <div className="l1">
+                        <label>LAB 8</label>
+                        <hr/>
+                    </div>                    
+                    <label><h2>ID</h2></label>
+                    {/* The previous onSubmit attribute should be set to the readId function using JSX */}
+                    <form onSubmit={this.readId}>
+                         {/* ... input element w/ text input &... */}
+                        <input type="text" id="id" name="id" placeholder="Enter ID.."/>
+                        {/* ...button element for submition */}
+                        <button >SUBMIT</button>
+                    </form>
+                </div>
+            );
 
-    }
-
-    render() {
-        return(
-            <div>
-                <h2>Search for Characters by their Id:</h2>
-                <input 
-                    type="text" 
-                    id="idSearch" 
-                    // onKeyUp={this.idSearchFormSubmit} 
-                />
-                 <button onKeyUp={this.idSearchFormSubmit}>SUBMIT</button>
-            </div>
-        );
-    }
+        }
 
 }
-
 export default IdSearch;

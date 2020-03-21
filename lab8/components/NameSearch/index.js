@@ -1,41 +1,50 @@
 
 class NameSearch extends React.Component {
+    // Name Section
+     readName(event) {
 
-    nameSearchFormSubmit = () => {
+    // Stop (prevent) the 'default' form action
+    event.preventDefault();
 
-        // Get the input's value
-        let name = document.querySelector('#nameSearch').value;
+    // Find the element with 'id="name"'
+    let element = document.querySelector("#name");
 
-        // Test if name is an empty string
-        // If so, change it to a value
-        if(name.length === 0) {
-            name = "0";
+    fetch("/api/pokemon/name/" + element.value).then((res) => {
+        // Parse the string into a JavaScript object and return it
+        return res.json();
+        }) .then((processed) => {
+        
+        // Find the element with 'id="reportingArea"'
+        let reporting = document.querySelector("#reportingArea");
+
+        // Does the 'processed' object have a property called 'error'?
+        if(processed.error) {
+            reporting.innerHTML = processed.error;
+        } else {
+            reporting.innerHTML = processed.id;
+            }
+
+        });
+        
+        element.value ="";
         }
 
-        // Look for characters based on their name
-        fetch("/api/pokemon/name/" + name)
-        .then((res) => { return res.json() })
-        .then((processed) => {
-            // Call the callback function given to the class component
-            this.props.callback(processed);
-        });
+        render() {
+            return(
+                <div>
+                    <label ><h2>NAME</h2></label>
+                    {/* The previous onSubmit attribute should be set to the readName function using JSX */}
 
-    }
-
-    render() {
-        return(
-            <div>
-                <h2>Search for Characters by their Name:</h2>
-                <input 
-                    type="text" 
-                    id="nameSearch" 
-                    // onKeyUp={this.nameSearchFormSubmit} 
-                />
-                 <button onKeyUp={this.nameSearchFormSubmit}>SUBMIT</button>
-            </div>
-        );
-    }
-
+                    <form onSubmit={this.readName}>
+                        {/* ... input element w/ text input &... */}
+                        <input type="text" id="name" name="name" placeholder="Enter Name.."/>
+                        {/* ...button element for submition */}
+                        <button>SUBMIT</button>
+                    </form>  
+                </div>
+            );
+            
+        }
 }
 
 export default NameSearch;
