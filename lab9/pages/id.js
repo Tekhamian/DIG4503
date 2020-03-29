@@ -10,6 +10,18 @@ const Id = () => (
       </Head>
   
       <main>
+
+        {/* Name Search */}
+        <div>
+          <h1 className="mainTitle">
+            PokeMon Name Search
+          </h1>
+          <Link href="../components/NameSearch">
+            <a>Search by Name</a>
+          </Link>
+        </div>
+
+        {/* Id Search */}
         <div>
           <h1 className="mainTitle">
             PokeMon Id Search
@@ -18,11 +30,21 @@ const Id = () => (
             <a>Search by Id</a>
           </Link>
         </div>
+
+        {/* Type Search */}
+        <div>
+        <h1 className="mainTitle">
+          PokeMon Type Search
+        </h1>
+        <Link href="../components/NameSearch">
+          <a>Search by Type</a>
+        </Link>
+      </div>
       </main>
       <footer>
         
       </footer>
     </div>
   )
-  export default Id
+  export default Id;
   

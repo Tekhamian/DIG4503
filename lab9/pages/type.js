@@ -24,4 +24,4 @@ const Type = () => (
     </footer>
   </div>
 )
-export default Type
+export default Type;

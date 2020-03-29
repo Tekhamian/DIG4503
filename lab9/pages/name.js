@@ -23,4 +23,4 @@ const Search = () => (
       </footer>
     </div>
   )
-  export default Search
+  export default Search;
