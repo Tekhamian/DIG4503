@@ -1,9 +1,11 @@
+import styles from "./StyleComponents.module.css";
+
 class DisplayArea extends React.Component {
     render() {
         return(
             <div>
-            <h2>REPORTING</h2>
-            <h3><div id="displayArea"></div></h3>
+            <label className={styles.xlargeText}>SEARCH OUTPUT</label>
+            <h3><div className={styles.displayArea}></div></h3>
             </div>
         );
     }

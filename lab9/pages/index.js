@@ -1,43 +1,43 @@
 import Head from 'next/head';
 import Link from 'next/link';
-
+// import styles from "../components/StyleComponents/module.css";
 
 //NAME SEARCH 
 // Functional component "Search", using an arrow fuction
 const Search = () => (
-    <div className="container">
+    <div>
       <Head>
         <title>PokeMon Search</title>
       </Head>
   
       <main>
-        <div>
-          <h1 className="mainTitle">
+        <p>
+          <label>
             PokeMon Name Search
-          </h1>
-          <Link href="../components/NameSearch">
+          </label><br></br>
+          <Link href="/NameSearch">
             <a>Search by Name</a>
           </Link>
-        </div>
-      </main>
+        </p>
 
-      <div>
-          <h1 className="mainTitle">
+        <p>
+          <label>
             PokeMon Id Search
-          </h1>
-          <Link href="../components/NameSearch">
+          </label><br></br>
+          <Link href="/IdSearch">
             <a>Search by Id</a>
-          </Link>
-        </div>
+          </Link><br></br>
+        </p>
 
         <div>
-          <h1 className="mainTitle">
+          <label>
             PokeMon Type Search
-          </h1>
-          <Link href="../components/NameSearch">
+          </label><br></br>
+          <Link href="/typeSearch">
             <a>Search by Type</a>
           </Link>
         </div>
+      </main>
       <footer>
         
       </footer>

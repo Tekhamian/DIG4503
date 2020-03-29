@@ -1,3 +1,5 @@
+import styles from "./StyleComponents/module.css";
+
 class TypeSearch extends React.Component {
     // Type Section
      readType(event) {
@@ -32,14 +34,14 @@ class TypeSearch extends React.Component {
         render() {
             return(
                 <div>
-                    <label ><h2>TYPE</h2></label>
+                    <label className={styles.xlargeText}>TYPE</label>
                     {/* The previous onSubmit attribute should be set to the readType function using JSX */}
 
                     <form onSubmit={this.readType}>
                         {/* ... input element w/ text input &... */}
                         <input type="text" id="type" name="type" placeholder="Enter Type.."/>
                         {/* ...button element for submition */}
-                        <button>SUBMIT</button>
+                        <button className={styles.btn}>SUBMIT</button>
                     </form>  
                 </div>
             );

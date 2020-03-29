@@ -14,7 +14,7 @@ const Type = () => (
         <h1 className="mainTitle">
           PokeMon Type Search
         </h1>
-        <Link href="../components/NameSearch">
+        <Link href="../components/TypeSearch">
           <a>Search by Type</a>
         </Link>
       </div>

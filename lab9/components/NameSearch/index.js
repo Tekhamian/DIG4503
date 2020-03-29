@@ -1,3 +1,5 @@
+import styles from "./StyleComponents/module.css";
+
 
 class NameSearch extends React.Component {
     // Name Section
@@ -36,14 +38,14 @@ class NameSearch extends React.Component {
         render() {
             return(
                 <div>
-                    <label ><h2>NAME</h2></label>
+                    <label className={styles.xlargeText}>NAME</label>
                     {/* The previous onSubmit attribute should be set to the readName function using JSX */}
 
                     <form onSubmit={this.readName}>
                         {/* ... input element w/ text input &... */}
                         <input type="text" id="name" name="name" placeholder="Enter Name.."/>
                         {/* ...button element for submition */}
-                        <button>SUBMIT</button>
+                        <button className={styles.btn}>SUBMIT</button>
                     </form>  
                 </div>
             );
