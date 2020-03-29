@@ -1,7 +1,4 @@
-// Delayed (3 sec) Console log action
-// setTimeout(function(){
-//     console.log('3 seconds have passed!!');
-// }, 3000);
+//***Timer that prints intervals based on seconds passed***
 
 let time = 0;
 let timer = setInterval(function(){
