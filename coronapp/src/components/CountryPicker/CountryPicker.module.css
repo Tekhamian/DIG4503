@@ -1,0 +1,15 @@
+.container {
+    /* width: 92%; */
+    margin-bottom: 6%;
+    margin-right: 100px;;
+    border: 3px solid rgb(92, 92, 92);
+    /* border-bottom: 20px solid  black; */
+}
+
+
+
+.formcontrol {
+    width: 100%;
+    background-color: rgb(75, 75, 75);
+    
+}

@@ -1,26 +1,20 @@
 import Head from 'next/head';
-import Link from 'next/link';
+import LinkHeader from '../components/LinkHeader';
+import NameSearch from '../components/NameSearch';
+import Styles from '../components/Style.module.css'
 
-//NAME SEARCH 
-// Functional component "Search", using an arrow fuction
-const Search = () => (
-    <div className="container">
+//ID  - using a functional component named "NamePage"
+function NamePage() {
+  return (
+    <div className={Styles.wrapper}>
       <Head>
         <title>PokeMon Name Search</title>
       </Head>
-      <main>
-        <div>
-          <h1 className="mainTitle">
-            PokeMon Name Search
-          </h1>
-          <Link href="../components/NameSearch">
-            <a>Search by Name</a>
-          </Link>
-        </div>
-      </main>
-      <footer>
-        
-      </footer>
+      <LinkHeader />
+      <NameSearch />
+    
     </div>
-  )
-  export default Search;
+  );
+}
+
+export default NamePage;

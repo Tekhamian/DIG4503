@@ -1,11 +1,24 @@
 
-// import Pokemon from 'json-pokemon';
+import Pokemon from 'json-pokemon';
 
-// function response(req, res) {
+function response(req, res) {
 
-//     let type = req.query.type;
+    let result = [];
 
-//     let result = [];
+    let type = req.query.type;
+
+    pokemon.forEach((pokemonObject) => {
+        pokemonObject.typeList.forEach((typeProperty) => {
+            if (type === typeProperty) {
+                result.push(pokemonObject);
+            }
+        })
+    })
+
+    res.json(result)
+}
+
+
 
 //     //A "for" loop which goes through the entire pokemon database
 //     for (let i = 0; i < pokemon.length; i++) {

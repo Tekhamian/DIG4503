@@ -1,27 +1,20 @@
 import Head from 'next/head';
-import Link from 'next/link';
+import LinkHeader from '../components/LinkHeader';
+import TypeSearch from '../components/TypeSearch';
+import Styles from '../components/Style.module.css'
 
-//TYPE SEARCH
-// Functional component "Type", using an arrow fuction
-const Type = () => (
-  <div className="container">
-    <Head>
-      <title>PokeMon Type Search</title>
-    </Head>
+//ID  - using a functional component named "TypePage"
+function TypePage() {
+  return (
+    <div className={Styles.wrapper}>
+      <Head>
+        <title>PokeMon Type Search</title>
+      </Head>
+      <LinkHeader />
+      <TypeSearch />
+    
+    </div>
+  );
+}
 
-    <main>
-      <div>
-        <h1 className="mainTitle">
-          PokeMon Type Search
-        </h1>
-        <Link href="../components/TypeSearch">
-          <a>Search by Type</a>
-        </Link>
-      </div>
-    </main>
-    <footer>
-      
-    </footer>
-  </div>
-)
-export default Type;
+export default TypePage;

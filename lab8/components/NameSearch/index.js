@@ -9,23 +9,20 @@ class NameSearch extends React.Component {
     // Find the element with 'id="name"'
     let element = document.querySelector("#name");
 
-    fetch("/api/pokemon/name/" + element.value).then((res) => {
-        // Parse the string into a JavaScript object and return it
-        return res.json();
-        }) .then((processed) => {
+      // Look for movies based on the name
+      fetch("/api/pokemon/name/" + element.value)
+      .then((res) => { return res.json() })
+      .then((processed) => {
+       
+          // Call the callback function given to the class component
+          this.props.callback(processed);
+         
+      });
         
-        // Find the element with 'id="reportingArea"'
-        let reporting = document.querySelector("#reportingArea");
-
-        // Does the 'processed' object have a property called 'error'?
-        if(processed.error) {
-            reporting.innerHTML = processed.error;
-        } else {
-            reporting.innerHTML = processed.id;
-            }
-
-        });
-        
+      
+           // Find the element with 'id="reportingArea"'
+           let reporting = document.querySelector("#reportingArea");
+            
         element.value ="";
         }
 
@@ -48,3 +45,44 @@ class NameSearch extends React.Component {
 }
 
 export default NameSearch;
+
+
+// class NameSearch extends React.Component {
+
+//     nameSearch = () => {
+
+//         // Get the input's value
+//         let name = document.querySelector('#nameSearch').value;
+
+//         // Test if name is an empty string
+//         // If so, change it to a value
+//         if(name.length === 0) {
+//             name = "0";
+//         }
+
+//         // Look for movies based on the name
+//         fetch("http://localhost:80/movies/year/" + name.value)
+//         .then((res) => { return res.json() })
+//         .then((processed) => {
+//             // Call the callback function given to the class component
+//             this.props.callback(processed);
+//         });
+
+//     }
+
+//     render() {
+//         return(
+//             <div>
+//                 <h2>Search for Movies by their Name:</h2>
+//                 <input 
+//                     type="text" 
+//                     id="nameSearch" 
+//                     onKeyUp={this.nameSearch} 
+//                 />
+//             </div>
+//         );
+//     }
+
+// }
+
+// export default NameSearch;

@@ -1,0 +1,23 @@
+.containerForCards {
+    margin-top: 6%;
+    padding-bottom: 6%;
+}
+
+.card {
+    margin: 0 2% !important;
+}
+
+.deaths {
+    border: 1px solid red;
+    border-bottom: 20px solid rgba(200, 6, 10, 2);
+}
+
+.infected {
+    border: 1px solid orange;
+    border-bottom: 20px solid orange;
+}
+
+.recovered {
+    border: 1px solid green;
+    border-bottom: 20px solid green;
+}

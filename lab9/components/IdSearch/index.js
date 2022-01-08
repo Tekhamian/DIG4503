@@ -1,49 +1,63 @@
-import styles from "./StyleComponents/module.css";
+import Styles from "../Style.module.css";
+import DisplayArea from "../DisplayArea";
 
-class IdSearch extends React.Component {
- //ID Section
- readId(event) {
+//ID Section
 
-    // (prevent) Stop the 'default' form action
-    event.preventDefault();
+class IdSearch extends React.Component { 
 
-    // Find the element with 'id="id"'
-    let element = document.querySelector("#id");
+    // constructor for callback elements
+    constructor (props){
+        super (props);
 
-    fetch("/api/pokemon/id/" + element.value)
-    .then((res) => {return res.json();}) 
-    .then((processed) => {
+        this.state = {
+            searchValue: "",
+            result: []
         
-        // Find the element with 'className="displayArea"'
-        let reporting = document.querySelector(".displayArea");
+        };
+    }
 
-        // Does the 'processed' object have a property called 'error'?
-        if(processed.error) {
-            reporting.innerHTML = processed.error;
-        } else {
-            reporting.innerHTML = processed.id;
-            }
+    // State controller
+    changeHandler (value) {
+        this.setState ({searchValue: value}
+        );
+    }
 
-        });
+    async clickController() {
 
-        element.value ="";
+        let searchValue = this.state.searchValue;
+
+        if (searchValue ==="") {
+            searchValue = '~';
+        }
+
+        let response = await fetch("/api/pokemon/id/" + searchValue)
+        let processed = await res.json();
+
+        this.setState({result: processed});
+           
     }
 
     render() {
         return(
             <div>
-                <div className={styles.labelOne}>
-                    <label>LAB 8</label>
+                <div className={Styles.labelOne}>
+                    <label>LAB 9</label>
                     <hr/>
                 </div>                    
-                <label className={styles.xlargeText}>ID</label>
+                <label className={Styles.xlargeText}>ID</label>
                 {/* The previous onSubmit attribute should be set to the readId function using JSX */}
-                <form onSubmit={this.readId}>
+                <form onSubmit={ () => {this.clickController()} }>
                      {/* ... input element w/ text input &... */}
-                    <input type="text" id="id" name="id" placeholder="Enter ID.."/>
+                    <input className="userInput" type="text" id="idSearch" name="idSearch" placeholder="Enter ID.." 
+                    onChange={(event) => { this.changeHandler(event.target.value); } } />
                     {/* ...button element for submition */}
-                    <button className={styles.btn} >SUBMIT</button>
+                    <button className={Styles.btn} >SUBMIT</button>
                 </form>
+                {
+                    this.state.result.map((pokemon, index) => { 
+                        return(<DisplayArea pokemon={pokemon} number={index}/>)
+                    })
+                }
             </div>
         );
 

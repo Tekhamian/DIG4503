@@ -1,97 +1,67 @@
-import styles from "./StyleComponents/module.css";
+import Styles from "../Style.module.css";
+import DisplayArea from "../DisplayArea";
 
+//Name Section
 
-class NameSearch extends React.Component {
-    // Name Section
-     readName(event) {
+class IdSearch extends React.Component { 
 
-    // Stop (prevent) the 'default' form action
-    event.preventDefault();
+    // constructor for callback elements
+    constructor (props){
+        super (props);
 
-    // Find the element with 'id="name"'
-    let element = document.querySelector("#name");
+        this.state = {
+            searchValue: "",
+            result: []
+        
+        };
+    }
 
-      // Look for characters based on the name
-      fetch("/api/pokemon/name/" + element.value)
-      .then((res) => { return res.json(); })
-      .then((processed) => {
-          
-           // Find the element with 'id="displayArea"'
-           let reporting = document.querySelector("#displayArea");
+    // State controller
+    changeHandler (value) {
+        this.setState ({searchValue: value}
+        );
+    }
 
-           // Does the 'processed' object have a property called 'error'?
-           if(processed.error) {
-               reporting.innerHTML = processed.error;
-           } else {
-               reporting.innerHTML = processed.name;
-               }
-   
-           });
-   
-           element.value ="";
-       }
-   
-       pressSubmit() {
+    async clickController() {
 
-       }
+        let searchValue = this.state.searchValue;
 
-        render() {
-            return(
-                <div>
-                    <label className={styles.xlargeText}>NAME</label>
-                    {/* The previous onSubmit attribute should be set to the readName function using JSX */}
-
-                    <form onSubmit={this.readName}>
-                        {/* ... input element w/ text input &... */}
-                        <input type="text" id="name" name="name" placeholder="Enter Name.."/>
-                        {/* ...button element for submition */}
-                        <button className={styles.btn}>SUBMIT</button>
-                    </form>  
-                </div>
-            );
-            
+        if (searchValue ==="") {
+            searchValue = '~';
         }
+
+        let response = await fetch("/api/pokemon/name/" + searchValue)
+        let processed = await res.json();
+
+        this.setState({result: processed});
+           
+    }
+
+    render() {
+        return(
+            <div>
+                <div className={Styles.labelOne}>
+                    <label>LAB 9</label>
+                    <hr/>
+                </div>                    
+                <label className={Styles.xlargeText}>Name</label>
+                {/* The previous onSubmit attribute should be set to the readId function using JSX */}
+                <form onSubmit={ () => {this.clickController()} }>
+                     {/* ... input element w/ text input &... */}
+                    <input className="userInput" type="text" id="nameSearch" name="nameSearch" placeholder="Enter Name.." 
+                    onChange={(event) => { this.changeHandler(event.target.value); } } />
+                    {/* ...button element for submition */}
+                    <button className={Styles.btn} >SUBMIT</button>
+                </form>
+                {
+                    this.state.result.map((pokemon, index) => { 
+                        return(<DisplayArea pokemon={pokemon} number={index}/>)
+                    })
+                }
+            </div>
+        );
+
+    }
+
 }
-
-export default NameSearch;
-
-
-// class NameSearch extends React.Component {
-
-//     nameSearch = () => {
-
-//         // Get the input's value
-//         let name = document.querySelector('#nameSearch').value;
-
-//         // Test if name is an empty string
-//         // If so, change it to a value
-//         if(name.length === 0) {
-//             name = "0";
-//         }
-
-//         // Look for characters based on the name
-//         fetch("http://localhost:80/characters/year/" + name.value)
-//         .then((res) => { return res.json() })
-//         .then((processed) => {
-//             // Call the callback function given to the class component
-//             this.props.callback(processed);
-//         });
-
-//     }
-
-//     render() {
-//         return(
-//             <div>
-//                 <h2>Search for characters by their Name:</h2>
-//                 <input 
-//                     type="text" 
-//                     id="nameSearch" 
-//                     onKeyUp={this.nameSearch} 
-//                 />
-//             </div>
-//         );
-//     }
-
-// }
-
-// export default NameSearch;
+export default IdSearch;
