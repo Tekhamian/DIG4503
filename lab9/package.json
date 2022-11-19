@@ -10,7 +10,7 @@
   "dependencies": {
     "chalk": "^3.0.0",
     "json-pokemon": "^1.0.0",
-    "next": "^12.0.7",
+    "next": "^12.3.3",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   }
